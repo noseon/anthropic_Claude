@@ -94,4 +94,5 @@ class Anthropic():
           headers = {'Accept': '*/*',"Cookie": f"sessionKey={cookie}",'Content-Length': '38'}
           headers.update(header_b)
           requests.request("DELETE", f"{link}organizations/{uuid_organization}/chat_conversations/{uuid_conversation}", headers=headers, data=payload)
-#------------------------------------------------------------------------------
+          uuid_organization = ''
+          uuid_conversation = ''
