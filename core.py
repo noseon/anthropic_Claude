@@ -54,6 +54,12 @@ class Anthropic():
               Anthropic.create_new_chat()
               Anthropic.list_conversation()
       #------------------------------------------------------------------------------
+      def send_message_direct(prompt):
+          Anthropic.load_cookie()
+          texto = Anthropic.send_message(prompt)
+          Anthropic.delete_conversation()
+          return texto
+      #------------------------------------------------------------------------------        
       def send_message(prompt):
           global link, uuid_organization, uuid_conversation,  cookie, user_agent, header_b
           if uuid_organization == '' or uuid_conversation == '':
@@ -89,3 +95,4 @@ class Anthropic():
           headers.update(header_b)
           requests.request("DELETE", f"{link}organizations/{uuid_organization}/chat_conversations/{uuid_conversation}", headers=headers, data=payload)
 #------------------------------------------------------------------------------
+print(Anthropic.send_message_direct("quero suco de uva como fazer ?"))
